@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<title>Annuaire de tatoueurs - Oral DWWM</title>
+
+		<link rel="stylesheet" href="dist/reset.css" />
+		<link rel="stylesheet" href="dist/reveal.css" />
+		<link rel="stylesheet" href="dist/theme/black.css" />
+		<style>
+			:root {
+				--ink-bg: #120915;
+				--ink-panel: rgba(31, 17, 38, 0.82);
+				--ink-panel-strong: rgba(48, 22, 56, 0.9);
+				--ink-border: rgba(214, 136, 176, 0.3);
+				--ink-accent: #c44772;
+				--ink-violet: #8f5ad8;
+				--ink-text: #f6eef7;
+				--ink-muted: #d3bfd7;
+			}
+
+			body {
+				background:
+					radial-gradient(circle at top left, rgba(143, 90, 216, 0.18), transparent 34rem),
+					linear-gradient(145deg, #120915 0%, #1c0b17 45%, #270d20 100%);
+			}
+
+			.reveal {
+				color: var(--ink-text);
+				font-family: Inter, "Segoe UI", Arial, sans-serif;
+			}
+
+			.reveal .slides {
+				text-align: left;
+			}
+
+			.reveal h1,
+			.reveal h2,
+			.reveal h3 {
+				color: var(--ink-text);
+				font-weight: 750;
+				letter-spacing: 0;
+				text-transform: none;
+			}
+
+			.reveal h1 {
+				font-size: 2.45em;
+			}
+
+			.reveal h2 {
+				font-size: 1.55em;
+				margin-bottom: 0.55em;
+			}
+
+			.reveal p,
+			.reveal li {
+				color: var(--ink-muted);
+				font-size: 0.78em;
+				line-height: 1.35;
+			}
+
+			.reveal pre {
+				box-shadow: none;
+				margin: 0;
+				width: 100%;
+			}
+
+			.reveal pre code {
+				background: #160d1c;
+				border: 1px solid var(--ink-border);
+				border-radius: 8px;
+				font-size: 0.62em;
+				line-height: 1.35;
+				padding: 1rem;
+			}
+
+			.kicker {
+				color: #f0a0bd;
+				font-size: 0.5em;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				margin-bottom: 0.7rem;
+				text-transform: uppercase;
+			}
+
+			.lead {
+				color: #f6d9e5;
+				font-size: 0.95em;
+				max-width: 900px;
+			}
+
+			.two-col {
+				align-items: center;
+				display: grid;
+				gap: 1.3rem;
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.three-col {
+				display: grid;
+				gap: 0.85rem;
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			.card,
+			.metric,
+			.code-card {
+				background: var(--ink-panel);
+				border: 1px solid var(--ink-border);
+				border-radius: 8px;
+				padding: 1rem;
+			}
+
+			.metric strong,
+			.card strong {
+				color: var(--ink-text);
+				display: block;
+				font-size: 0.9em;
+				margin-bottom: 0.25rem;
+			}
+
+			.tag-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+			}
+
+			.tag {
+				background: rgba(196, 71, 114, 0.2);
+				border: 1px solid rgba(196, 71, 114, 0.45);
+				border-radius: 999px;
+				color: #ffd8e6;
+				font-size: 0.5em;
+				font-weight: 700;
+				padding: 0.35rem 0.6rem;
+			}
+
+			.visual {
+				background: var(--ink-panel-strong);
+				border: 1px solid var(--ink-border);
+				border-radius: 8px;
+				margin: 0;
+				overflow: hidden;
+			}
+
+			.visual img {
+				display: block;
+				max-height: 420px;
+				object-fit: contain;
+				width: 100%;
+			}
+
+			.image-only .visual img {
+				max-height: 620px;
+			}
+
+			.results-real .two-col {
+				align-items: start;
+				gap: 0.85rem;
+			}
+
+			.results-real .three-col {
+				gap: 0.55rem;
+			}
+
+			.results-real .metric,
+			.results-real .card {
+				padding: 0.7rem;
+			}
+
+			.results-real .card {
+				margin-top: 0.55rem;
+			}
+
+			.results-real .metric p,
+			.results-real .card p {
+				font-size: 0.64em;
+				line-height: 1.2;
+				margin-bottom: 0;
+			}
+
+			.results-real .visual img {
+				max-height: 350px;
+			}
+
+			.caption {
+				color: var(--ink-muted);
+				font-size: 0.45em;
+				padding: 0.55rem 0.75rem;
+			}
+
+			.flow {
+				align-items: stretch;
+				display: grid;
+				gap: 0.75rem;
+				grid-template-columns: repeat(4, 1fr);
+			}
+
+			.flow .step {
+				background: rgba(255, 255, 255, 0.06);
+				border: 1px solid var(--ink-border);
+				border-radius: 8px;
+				padding: 0.85rem;
+			}
+
+			.workflow {
+				grid-template-columns: repeat(7, 1fr);
+			}
+
+			.step span {
+				color: #f0a0bd;
+				display: block;
+				font-size: 0.45em;
+				font-weight: 800;
+				margin-bottom: 0.3rem;
+			}
+
+			.centered {
+				text-align: center;
+			}
+
+			.centered h1,
+			.centered h2,
+			.centered p {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.logo-mark {
+				border: 1px solid rgba(255, 255, 255, 0.16);
+				border-radius: 8px;
+				color: #fff;
+				display: inline-block;
+				font-size: 0.45em;
+				font-weight: 800;
+				margin-bottom: 1rem;
+				padding: 0.45rem 0.7rem;
+			}
+
+			.compare {
+				display: grid;
+				gap: 1rem;
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.compare .card {
+				min-height: 150px;
+			}
+
+			@media (max-width: 800px) {
+				.two-col,
+				.three-col,
+				.flow,
+				.workflow,
+				.compare {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="centered">
+					<div class="logo-mark">DWWM - Projet professionnel</div>
+					<h1>Annuaire de tatoueurs</h1>
+					<p class="lead">Application web de recherche, publication et modération de profils d'artistes tatoueurs.</p>
+					<figure class="visual">
+						<img src="presentation/images/accueil1.png" alt="Page d'accueil de l'annuaire de tatoueurs" />
+						<figcaption class="caption">Projet Annuaire de tatoueurs.</figcaption>
+					</figure>
+					<aside class="notes">
+						Bonjour, je vais vous présenter mon projet d'oral DWWM : un annuaire de tatoueurs. L'objectif est de montrer une application web complète, depuis l'analyse des besoins jusqu'au déploiement sur un VPS, c'est-à-dire un Virtual Private Server. Je vais suivre l'ordre de mon dossier projet : présentation, analyse, environnement technique, réalisations Front-End, réalisations Back-End, sécurité, déploiement, difficultés, résultats, conclusion et évolutions futures.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">1. Présentation du projet</p>
+					<h2>Contexte</h2>
+					<div class="two-col">
+						<div>
+							<p class="lead">Un outil pensé pour rapprocher visiteurs et artistes tatoueurs.</p>
+							<div class="tag-list">
+								<span class="tag">Recherche locale</span>
+								<span class="tag">Styles</span>
+								<span class="tag">Profils</span>
+								<span class="tag">Galeries</span>
+							</div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/accueil1.png" alt="Page d'accueil de l'annuaire de tatoueurs" />
+							<figcaption class="caption">Page d'accueil du projet.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Le projet part d'un besoin simple : faciliter la mise en relation entre des personnes qui cherchent un tatoueur et des artistes qui veulent présenter leur travail. Le tatouage est très visuel, mais la recherche peut vite devenir dispersée entre réseaux sociaux, bouche-à-oreille et sites personnels. L'annuaire centralise les profils, les styles, la localisation et les images afin de donner un point d'entrée clair aux visiteurs.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">1. Présentation du projet</p>
+					<h2>Situation actuelle</h2>
+					<div class="three-col">
+						<div class="card"><strong>Informations dispersées</strong><p>Réseaux sociaux, moteurs de recherche, sites personnels.</p></div>
+						<div class="card"><strong>Comparaison difficile</strong><p>Styles, villes et disponibilités ne sont pas toujours lisibles.</p></div>
+						<div class="card"><strong>Visibilité inégale</strong><p>Les artistes moins connus peuvent être difficiles à trouver.</p></div>
+					</div>
+					<aside class="notes">
+						Aujourd'hui, un visiteur doit souvent passer par plusieurs plateformes pour comparer des tatoueurs. Les informations sont parfois incomplètes ou non structurées. Pour les artistes, la visibilité dépend beaucoup des réseaux sociaux et de leur référencement. Cette situation crée une opportunité : proposer un service spécialisé, organisé et facile à parcourir.
+					</aside>
+				</section>
+
+				<section class="image-only">
+					<p class="kicker">1. Présentation du projet</p>
+					<h2>Situation actuelle en image</h2>
+					<figure class="visual">
+						<img src="presentation/images/accueil3.png" alt="Aperçu de l'annuaire côté visiteur" />
+						<figcaption class="caption">Aperçu du parcours visiteur.</figcaption>
+					</figure>
+					<aside class="notes">
+						Cette capture permet de montrer visuellement le parcours visiteur et l'intérêt d'un annuaire organisé autour des profils, des styles et de la recherche.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">1. Présentation du projet</p>
+					<h2>Problématique</h2>
+					<div class="two-col">
+						<p class="lead">Comment permettre à un visiteur de trouver rapidement un tatoueur adapté, tout en garantissant des profils fiables et modérés ?</p>
+						<figure class="visual">
+							<img src="presentation/schemas/cahier des charge.png" alt="Extrait du cahier des charges du projet" />
+							<figcaption class="caption">Cadrage du besoin et des contraintes.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						La problématique principale concerne à la fois l'expérience utilisateur et la qualité des données. Le visiteur veut trouver rapidement un artiste selon une ville, un style ou un mot-clé. L'artiste veut pouvoir être visible. L'administrateur doit garantir que les profils publiés sont cohérents, validés et sécurisés. Mon application doit donc combiner recherche, publication de contenu et modération.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">1. Présentation du projet</p>
+					<h2>Objectifs</h2>
+					<div class="two-col">
+						<div class="flow">
+							<div class="step"><span>01</span><p>Créer un annuaire clair.</p></div>
+							<div class="step"><span>02</span><p>Permettre la recherche multicritères.</p></div>
+							<div class="step"><span>03</span><p>Gérer les profils artistes.</p></div>
+							<div class="step"><span>04</span><p>Déployer une version en production.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/wireframe_annuaire_tatoueurs.png" alt="Wireframe de l'annuaire de tatoueurs" />
+							<figcaption class="caption">Première organisation visuelle du parcours.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Les objectifs sont fonctionnels et techniques. Côté produit, je veux proposer un annuaire lisible, consultable par des visiteurs, avec des fiches artistes et des galeries. Côté développement, je veux démontrer ma capacité à créer une application Node.js et Express.js, à utiliser MongoDB Atlas avec Mongoose, à organiser le code, à sécuriser les accès et à déployer le projet sur un serveur Linux.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">2. Analyse des besoins</p>
+					<h2>Besoins utilisateurs</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="metric"><strong>Visiteurs</strong><p>Rechercher, filtrer, consulter un profil.</p></div>
+							<div class="metric"><strong>Artistes</strong><p>S'inscrire, proposer un profil, gérer des images.</p></div>
+							<div class="metric"><strong>Administrateur</strong><p>Valider, modérer, sécuriser les contenus.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/cahier des charge.png" alt="Cahier des charges de l'annuaire" />
+							<figcaption class="caption">Besoins et contraintes formalisés.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						J'ai séparé les besoins par type d'utilisateur. Le visiteur n'a pas besoin de compte : il doit accéder facilement à la recherche et aux fiches artistes. L'artiste a besoin d'un espace pour proposer ou modifier son profil. L'administrateur doit contrôler les publications, gérer les rôles et éviter que des contenus non validés soient visibles publiquement.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">2. Analyse des besoins</p>
+					<h2>Cahier des charges</h2>
+					<figure class="visual">
+						<img src="presentation/schemas/cahier des charge.png" alt="Cahier des charges du projet" />
+						<figcaption class="caption">Synthèse des besoins, contraintes et périmètre du projet.</figcaption>
+					</figure>
+					<aside class="notes">
+						Cette slide permet de montrer que le projet a été cadré avant le développement. Le cahier des charges sert à définir le besoin, les utilisateurs, les fonctionnalités prioritaires, les contraintes techniques et les limites du projet. Il m'a servi de référence pour garder une direction claire pendant la conception et éviter d'ajouter des fonctionnalités hors périmètre.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">2. Analyse des besoins</p>
+					<h2>Fonctionnalités principales</h2>
+					<div class="two-col">
+						<div class="tag-list">
+							<span class="tag">Inscription</span>
+							<span class="tag">Connexion</span>
+							<span class="tag">Recherche</span>
+							<span class="tag">Fiche artiste</span>
+							<span class="tag">Galerie</span>
+							<span class="tag">Dashboard</span>
+							<span class="tag">Modération</span>
+							<span class="tag">Déploiement</span>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/accueil2.png" alt="Fonctionnalités visibles sur la page d'accueil" />
+							<figcaption class="caption">Accès aux fonctionnalités principales.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Les fonctionnalités couvrent le parcours complet. Un artiste peut créer un compte et proposer un profil. Le visiteur peut parcourir les artistes et utiliser une recherche multicritères. L'administrateur peut se connecter à un espace dédié, consulter les profils en attente, les valider ou les refuser. Une partie de l'application suit une logique CRUD, Create Read Update Delete : créer des profils, les lire, les modifier et éventuellement les supprimer ou les refuser. Le projet repose aussi sur des fonctionnalités techniques importantes : sessions, variables d'environnement, connexion à la base de données et déploiement.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">2. Analyse des besoins</p>
+					<h2>Workflow d'inscription artiste</h2>
+					<div class="two-col">
+						<div class="flow workflow">
+							<div class="step"><span>01</span><p>Artiste</p></div>
+							<div class="step"><span>02</span><p>Formulaire</p></div>
+							<div class="step"><span>03</span><p>Email / vérification</p></div>
+							<div class="step"><span>04</span><p>Statut pending</p></div>
+							<div class="step"><span>05</span><p>Validation admin</p></div>
+							<div class="step"><span>06</span><p>Statut approved</p></div>
+							<div class="step"><span>07</span><p>Profil public</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/inscription artiste1.png" alt="Formulaire d'inscription artiste" />
+							<figcaption class="caption">Point de départ du parcours artiste.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Ce workflow montre que le profil artiste n'est pas publié directement. L'artiste remplit un formulaire, puis les informations peuvent passer par une étape de vérification. Le statut pending signifie que le profil est en attente. L'administrateur contrôle les informations, puis valide le profil. Une fois le statut approved appliqué, le profil devient visible publiquement dans l'annuaire. Cette étape est importante pour garantir la qualité des données et éviter les publications non contrôlées.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Stack utilisée</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Front-End</strong><p>HTML, CSS, JavaScript, EJS.</p></div>
+							<div class="card"><strong>Back-End</strong><p>Node.js, Express.js, Mongoose.</p></div>
+							<div class="card"><strong>Production</strong><p>MongoDB Atlas, GitHub, VPS Linux.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/tech utiliser.png" alt="Technologies utilisées pour le projet" />
+							<figcaption class="caption">Stack technique du projet.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						La stack technique est volontairement cohérente avec les compétences attendues en DWWM. HTML signifie HyperText Markup Language : il structure les pages. CSS signifie Cascading Style Sheets : il gère la mise en forme. JS signifie JavaScript : il apporte la logique côté navigateur et côté serveur avec Node.js. Express.js sert à créer les routes et gérer les requêtes HTTP. MongoDB Atlas héberge la base de données. Mongoose joue le rôle d'ODM, Object Document Mapper, utilisé avec Mongoose pour manipuler les documents MongoDB via des modèles JavaScript.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Schéma des technologies</h2>
+					<figure class="visual">
+						<img src="presentation/schemas/tech utiliser.png" alt="Schéma des technologies utilisées" />
+						<figcaption class="caption">Vue synthétique des outils du projet.</figcaption>
+					</figure>
+					<aside class="notes">
+						Ce schéma permet d'expliquer l'articulation générale. Le navigateur affiche les pages HTML générées par EJS et stylées avec CSS. Les interactions sont traitées par JavaScript. Le serveur Node.js et Express.js reçoit les requêtes, applique la logique métier, interroge MongoDB Atlas via Mongoose, puis renvoie une réponse. Git et GitHub servent au suivi de version et au transfert vers l'environnement de production.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Wireframe de l'application</h2>
+					<figure class="visual">
+						<img src="presentation/schemas/wireframe_annuaire_tatoueurs.png" alt="Wireframe de l'application Annuaire de tatoueurs" />
+						<figcaption class="caption">Organisation initiale des écrans et du parcours utilisateur.</figcaption>
+					</figure>
+					<aside class="notes">
+						Le wireframe permet de préparer l'interface avant de travailler le style graphique final. Il sert à poser la structure des pages, les zones importantes et la hiérarchie de l'information. Dans mon projet, il m'a aidé à organiser la page d'accueil, la recherche, la liste des artistes et l'accès aux fiches détaillées.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Architecture MVC</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Model</strong><p>Données et schémas Mongoose.</p></div>
+							<div class="card"><strong>View</strong><p>Templates EJS envoyés au navigateur.</p></div>
+							<div class="card"><strong>Controller</strong><p>Traitement des routes et actions.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/schema_2_modele_donnees_simplifie_corrige.png" alt="Données utilisées dans l'architecture MVC" />
+							<figcaption class="caption">Les modèles structurent les données de l'application.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						J'ai organisé le projet autour d'une logique MVC. MVC signifie Model View Controller. Le Model représente les données, par exemple User, Artist ou Session. La View correspond aux templates EJS qui génèrent le HTML. Le Controller reçoit la requête, appelle les modèles si besoin, applique la logique puis renvoie une vue ou une redirection. Cette séparation rend le projet plus lisible et plus maintenable.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Architecture MVC — schéma</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/schemas/tech utiliser.png" alt="Schéma technique utilisé pour expliquer MVC" />
+							<figcaption class="caption">Flux entre navigateur, serveur et base de données.</figcaption>
+						</figure>
+						<div class="flow">
+							<div class="step"><span>Model</span><p>Artist</p></div>
+							<div class="step"><span>Controller</span><p>Routes Express</p></div>
+							<div class="step"><span>View</span><p>Templates EJS</p></div>
+							<div class="step"><span>Response</span><p>HTML rendu</p></div>
+						</div>
+					</div>
+					<aside class="notes">
+						MVC signifie Model View Controller. Dans mon projet, le Model correspond par exemple au modèle Artist défini avec Mongoose. Il décrit les champs du profil artiste et permet d'interroger MongoDB. La View correspond aux templates EJS, qui génèrent le HTML visible par l'utilisateur. Le Controller Express reçoit la requête, récupère les données via le modèle Artist, prépare les informations puis renvoie la vue EJS. Ce découpage évite de mélanger l'affichage, la logique métier et l'accès aux données.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Structure du projet</h2>
+					<div class="two-col">
+						<div class="code-card">
+							<pre><code>controllers/
+models/
+routes/
+views/
+public/
+middlewares/
+app.js
+.env</code></pre>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/tech utiliser.png" alt="Structure technique du projet" />
+							<figcaption class="caption">Organisation du code autour de la stack utilisée.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						La structure du projet sépare les responsabilités. Les routes définissent les points d'entrée. Les controllers portent la logique de traitement. Les models décrivent les données MongoDB via Mongoose. Les views contiennent les templates EJS. Le dossier public contient les fichiers statiques : CSS, JavaScript côté client et images. Les middlewares regroupent les contrôles comme l'authentification ou la vérification du rôle administrateur.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>MongoDB Atlas</h2>
+					<div class="two-col">
+						<div class="two-col">
+							<div>
+								<p class="lead">Base de données cloud pour stocker comptes, profils et sessions.</p>
+								<div class="tag-list">
+									<span class="tag">Documents</span>
+									<span class="tag">Collections</span>
+									<span class="tag">Mongoose</span>
+								</div>
+							</div>
+							<figure class="visual">
+								<img src="presentation/schemas/schema_2_modele_donnees_simplifie_corrige.png" alt="Collections MongoDB de l'application" />
+								<figcaption class="caption">Collections et documents manipulés avec Mongoose.</figcaption>
+							</figure>
+						</div>
+						<div class="code-card">
+							<pre><code class="language-js">mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("Connexion MongoDB réussie"))
+  .catch((error) => console.error("Erreur MongoDB :", error));</code></pre>
+						</div>
+					</div>
+					<aside class="notes">
+						MongoDB Atlas est utilisé pour héberger la base de données dans le cloud. La connexion utilise une variable d'environnement afin de ne pas écrire l'identifiant et le mot de passe directement dans le code. Mongoose sert d'ODM, Object Document Mapper : il permet de définir des schémas et de manipuler les documents MongoDB avec une syntaxe JavaScript plus structurée.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">3. Environnement technique</p>
+					<h2>Modèle de données</h2>
+					<figure class="visual">
+						<img src="presentation/schemas/schema_2_modele_donnees_simplifie_corrige.png" alt="Modèle de données User Artist Session" />
+						<figcaption class="caption">Relations principales : User, Artist, Session.</figcaption>
+					</figure>
+					<aside class="notes">
+						Le modèle de données est centré sur trois éléments. User représente l'utilisateur, avec son email, son mot de passe haché et son rôle. Artist représente le profil public ou en attente de validation : nom, ville, styles, images, description et statut. Session représente la connexion active côté serveur. Ce modèle permet aussi de gérer les droits et la modération.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Interface utilisateur</h2>
+					<div class="two-col">
+						<div>
+							<p class="lead">Une interface sombre, visuelle et orientée recherche.</p>
+							<div class="tag-list">
+								<span class="tag">Accueil</span>
+								<span class="tag">Liste</span>
+								<span class="tag">Fiche</span>
+							</div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/listes des artistes.png" alt="Liste des artistes tatoueurs" />
+							<figcaption class="caption">Liste des artistes consultable par les visiteurs.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Côté Front-End, j'ai travaillé une interface cohérente avec l'univers du tatouage : fond sombre, contrastes forts, touches violet et bordeaux, cartes modernes. Le but n'est pas seulement esthétique : l'interface doit guider le visiteur vers la recherche, les résultats et la fiche artiste sans surcharge visuelle.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Page d'accueil</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/accueil1.png" alt="Capture de la page d'accueil" />
+							<figcaption class="caption">Accueil et point d'entrée du parcours visiteur.</figcaption>
+						</figure>
+						<div class="card"><strong>Parcours rapide</strong><p>Hero, moteur de recherche, navigation et accès aux artistes.</p></div>
+					</div>
+					<aside class="notes">
+						La page d'accueil sert de point d'entrée. Le hero présente immédiatement l'univers du site et le sujet : trouver un tatoueur. Le moteur de recherche est mis en avant pour guider le visiteur vers l'action principale. La navigation permet d'accéder aux artistes, aux informations utiles et aux espaces de connexion. L'objectif est que l'utilisateur comprenne rapidement où il se trouve et ce qu'il peut faire.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Fiche artiste</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/exemple fiche artiste.png" alt="Capture d'une fiche artiste" />
+							<figcaption class="caption">Fiche publique d'un artiste tatoueur.</figcaption>
+						</figure>
+						<div class="card"><strong>Informations clés</strong><p>Nom, ville, styles, galerie, réseaux sociaux et contact.</p></div>
+					</div>
+					<aside class="notes">
+						La fiche artiste rassemble les informations publiques importantes. Le visiteur peut voir le nom de l'artiste, sa ville, ses styles et sa galerie. Selon les informations disponibles, la fiche peut aussi donner accès aux réseaux sociaux ou à un moyen de contact. Le but est de donner assez d'éléments pour décider si l'artiste correspond au besoin, sans surcharger la page.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Responsive Design</h2>
+					<div class="two-col">
+						<div class="card"><strong>Adaptation mobile</strong><p>Navigation, formulaires et cartes restent lisibles sur petit écran.</p></div>
+						<figure class="visual">
+							<img src="presentation/images/responsive.png" alt="Exemple responsive design" />
+							<figcaption class="caption">Affichage responsive de l'application.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Le responsive design permet à l'application de rester utilisable sur ordinateur, tablette et mobile. J'ai utilisé CSS, Cascading Style Sheets, avec des mises en page adaptables, des largeurs flexibles et des éléments qui se réorganisent selon la taille de l'écran. C'est important car une recherche de tatoueur peut se faire depuis un téléphone.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Templates dynamiques EJS</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Pages générées</strong><p>Les vues reçoivent les données du serveur.</p></div>
+							<div class="card"><strong>Composants</strong><p>Header, formulaires, listes, cartes.</p></div>
+							<div class="card"><strong>Conditions</strong><p>Affichage selon utilisateur et rôle.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/accueil2.png" alt="Page générée dynamiquement avec EJS" />
+							<figcaption class="caption">Affichage dynamique des contenus côté visiteur.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						EJS permet de générer du HTML côté serveur. HTML signifie HyperText Markup Language. Au lieu d'écrire uniquement des pages statiques, les templates reçoivent les données envoyées par Express.js : par exemple une liste d'artistes ou un message d'erreur. Cela permet d'afficher dynamiquement les profils, les boutons et les états de validation selon le contexte.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Galerie et images</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/fiche artiste avec photo.png" alt="Fiche artiste avec photos" />
+							<figcaption class="caption">Galerie visible sur la fiche artiste.</figcaption>
+						</figure>
+						<div class="card"><strong>Objectif</strong><p>Mettre le portfolio au centre de la fiche artiste.</p></div>
+					</div>
+					<aside class="notes">
+						Pour un annuaire de tatoueurs, les images sont essentielles. La galerie permet au visiteur d'évaluer rapidement le style, la qualité visuelle et l'univers de l'artiste. Côté interface, j'ai cherché à garder une fiche claire : informations principales, localisation, styles et images. C'est une partie importante de l'expérience utilisateur.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">4. Réalisations Front-End</p>
+					<h2>Pages complémentaires</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/lexique.png" alt="Page lexique de l'application" />
+							<figcaption class="caption">Lexique pour accompagner les visiteurs.</figcaption>
+						</figure>
+						<figure class="visual">
+							<img src="presentation/images/conseil et astuce.png" alt="Page conseils et astuces" />
+							<figcaption class="caption">Conseils et astuces autour du tatouage.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Ces pages complémentaires enrichissent l'expérience au-delà de la recherche d'artistes. Le lexique aide les visiteurs à comprendre certains termes liés au tatouage. La page conseils et astuces apporte des informations pratiques, par exemple pour préparer un rendez-vous ou mieux comprendre les soins. Elles donnent aussi plus de contenu au site et renforcent son aspect professionnel.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">5. Réalisations Back-End</p>
+					<h2>Architecture serveur</h2>
+					<div class="two-col">
+						<div class="flow">
+							<div class="step"><span>Route</span><p>Reçoit la requête.</p></div>
+							<div class="step"><span>Middleware</span><p>Vérifie session et droits.</p></div>
+							<div class="step"><span>Controller</span><p>Traite l'action.</p></div>
+							<div class="step"><span>Model</span><p>Interroge MongoDB.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/dashboard2.png" alt="Vue dashboard côté serveur et administration" />
+							<figcaption class="caption">Interface administrateur alimentée par le Back-End.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Le Back-End repose sur Node.js et Express.js. Les routes définissent les URLs. Les middlewares peuvent vérifier l'authentification ou le rôle avant de laisser passer la requête. Les controllers exécutent la logique métier, par exemple rechercher des artistes ou valider un profil. Les models Mongoose communiquent avec MongoDB Atlas.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">5. Réalisations Back-End</p>
+					<h2>Authentification</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/connection artiste.png" alt="Page de connexion artiste" />
+							<figcaption class="caption">Connexion à l'espace artiste.</figcaption>
+						</figure>
+						<div class="code-card">
+							<pre><code class="language-js">const hashedPassword = await bcrypt.hash(password, 10);</code></pre>
+						</div>
+					</div>
+					<aside class="notes">
+						L'authentification permet d'identifier les utilisateurs. Une règle importante est de ne jamais stocker un mot de passe en clair. Ici, bcrypt transforme le mot de passe en version hachée avec un coût de 10. Lors de la connexion, on compare le mot de passe saisi avec le hash. Même si la base était exposée, les mots de passe d'origine ne seraient pas directement lisibles.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">5. Réalisations Back-End</p>
+					<h2>Gestion des rôles</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/connection admin.png" alt="Page de connexion administrateur" />
+							<figcaption class="caption">Accès réservé à l'administration.</figcaption>
+						</figure>
+						<div class="code-card">
+							<pre><code class="language-js">module.exports = function requireAdmin(req, res, next) {
+  if (req.session?.user?.role === "admin") return next();
+  return res.redirect("/admin/login");
+};</code></pre>
+						</div>
+					</div>
+					<aside class="notes">
+						La gestion des rôles permet de différencier les droits. Un visiteur peut consulter. Un artiste peut proposer ou gérer son profil. Un administrateur peut accéder à l'espace de modération. Ce middleware vérifie si l'utilisateur stocké en session possède le rôle admin. Si oui, la requête continue avec next. Sinon, l'utilisateur est redirigé vers la page de connexion administrateur.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">5. Réalisations Back-End</p>
+					<h2>Recherche multicritères</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/artiste par recherche.png" alt="Résultat de recherche artiste" />
+							<figcaption class="caption">Résultats filtrés par recherche.</figcaption>
+						</figure>
+						<div class="code-card">
+							<pre><code class="language-js">const filter = { status: "approved" };
+
+if (q) {
+  const qNorm = normalizeForSearch(q);
+  const tokens = qNorm.split(" ").filter(Boolean).slice(0, 8);
+
+  const andSearchText = tokens.map((token) => ({
+    searchText: { $regex: escapeRegex(token), $options: "i" },
+  }));
+
+  filter.$or = [
+    { $and: andSearchText },
+    { name: rxContains },
+    { city: rxContains },
+    { styles: { $elemMatch: { $regex: rxContains } } },
+    { postalCode: rxPrefix },
+    { department: rxPrefix },
+  ];
+}
+
+const artists = await Artist.find(filter)
+  .sort({ createdAt: -1 })
+  .skip(skip)
+  .limit(limit);</code></pre>
+						</div>
+					</div>
+					<aside class="notes">
+						La recherche multicritères filtre d'abord les artistes approuvés. Ensuite, si l'utilisateur saisit une recherche, je normalise le texte pour limiter les différences liées aux accents ou à la casse. Les tokens permettent de rechercher plusieurs mots. Le filtre teste ensuite plusieurs champs : nom, ville, styles, code postal ou département. La pagination utilise skip et limit afin de ne pas charger toute la base d'un coup.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">5. Réalisations Back-End</p>
+					<h2>Pagination</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/listes des artistes.png" alt="Liste paginée des artistes" />
+							<figcaption class="caption">Affichage maîtrisé de la liste des artistes.</figcaption>
+						</figure>
+						<div class="code-card">
+							<pre><code class="language-js">const pageParam = parseInt(req.query.page || "1", 10);
+const page = Math.max(Number.isFinite(pageParam) ? pageParam : 1, 1);
+const limit = 12;
+const skip = (page - 1) * limit;
+
+const artists = await Artist.find(filter)
+  .sort({ createdAt: -1 })
+  .skip(skip)
+  .limit(limit);</code></pre>
+						</div>
+					</div>
+					<aside class="notes">
+						La pagination évite d'afficher tous les artistes d'un coup. On lit le numéro de page dans la requête, on le sécurise avec Math.max pour éviter une valeur inférieure à 1, puis on fixe une limite de 12 artistes par page. La variable skip permet de sauter les résultats des pages précédentes. Cette logique améliore la lisibilité pour l'utilisateur et la performance côté serveur, car la requête charge seulement une partie des résultats.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">5. Réalisations Back-End</p>
+					<h2>Modération des profils</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/images/dashboard1.png" alt="Dashboard administrateur" />
+							<figcaption class="caption">Espace administrateur.</figcaption>
+						</figure>
+						<div class="card"><strong>Workflow</strong><p>Profil soumis, vérifié, validé ou refusé.</p></div>
+					</div>
+					<aside class="notes">
+						La modération évite qu'un profil soit publié directement sans contrôle. Un artiste peut soumettre un profil, mais le statut permet de distinguer les profils en attente et les profils approuvés. L'administrateur consulte le dashboard, vérifie les informations, puis valide ou refuse. Ce fonctionnement protège la qualité de l'annuaire et donne un rôle clair à l'administration.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">6. Sécurité et veille technologique</p>
+					<h2>Protection CSRF</h2>
+					<div class="two-col">
+						<div class="compare">
+							<div class="card"><strong>Avant</strong><p>Formulaire sensible sans token.</p></div>
+							<div class="card"><strong>Après</strong><p>Formulaire avec token CSRF vérifié côté serveur.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/connection admin.png" alt="Formulaire sensible côté administrateur" />
+							<figcaption class="caption">Les formulaires sensibles doivent être protégés.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						CSRF signifie Cross-Site Request Forgery. C'est une attaque où un site malveillant peut essayer de déclencher une action à l'insu d'un utilisateur déjà connecté. Par exemple, si l'utilisateur est connecté à l'administration, une requête non voulue pourrait tenter de modifier une donnée. Le token CSRF ajoute une valeur unique dans le formulaire. Côté serveur, on vérifie ce token avant d'accepter l'action. Si le token est absent ou invalide, la requête est refusée.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">6. Sécurité et veille technologique</p>
+					<h2>Sécurité de l'application</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Secrets</strong><p>Variables d'environnement.</p></div>
+							<div class="card"><strong>Sessions</strong><p>Accès protégés par rôle.</p></div>
+							<div class="card"><strong>HTTPS</strong><p>SSL/TLS en production.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/dashboard2.png" alt="Dashboard protégé par authentification" />
+							<figcaption class="caption">Accès protégés pour l'administration.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						La sécurité est abordée à plusieurs niveaux. Les secrets ne doivent pas être versionnés. Les variables d'environnement permettent de séparer le code et la configuration. MONGODB_URI contient l'adresse de connexion à MongoDB Atlas. SESSION_SECRET sert à signer les sessions. ADMIN_EMAIL peut servir à identifier ou créer un compte administrateur. BASE_URL indique l'adresse publique du projet. Les sessions protègent les espaces connectés. Les mots de passe sont hachés. Les accès administrateur sont contrôlés. En production, SSL/TLS correspond à la sécurisation HTTPS : les échanges entre le navigateur et le serveur sont chiffrés. J'ai aussi gardé en tête les recommandations OWASP, Open Web Application Security Project, notamment sur l'authentification, les injections et la protection des données sensibles. CSRF signifie Cross-Site Request Forgery : c'est une attaque qui pousse un utilisateur connecté à exécuter une action sans le vouloir; elle doit être prise en compte pour les formulaires sensibles.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">6. Sécurité et veille technologique</p>
+					<h2>Variables d'environnement</h2>
+					<div class="two-col">
+						<div class="code-card">
+							<pre><code class="language-env">MONGODB_URI=mongodb+srv://...
+SESSION_SECRET=...
+ADMIN_EMAIL=...
+BASE_URL=https://annuaire-tatoueurs.fr</code></pre>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/schema_deploiement_production_corrige.png" alt="Variables d'environnement en production" />
+							<figcaption class="caption">Configuration séparée entre code et production.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Les variables d'environnement servent à sortir les informations sensibles du code source. La chaîne MongoDB, le secret de session, l'email administrateur ou l'URL de base peuvent changer selon l'environnement. Ces valeurs ne doivent jamais être écrites directement dans le code source et ne doivent pas être envoyées sur GitHub. Cela protège les accès et permet d'avoir une configuration différente entre le développement local et la production.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">6. Sécurité et veille technologique</p>
+					<h2>Veille technologique</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Sécurité Web</strong><p>OWASP, sessions, mots de passe.</p></div>
+							<div class="card"><strong>Node.js</strong><p>Bonnes pratiques Express et dépendances.</p></div>
+							<div class="card"><strong>Déploiement</strong><p>Linux, HTTPS, supervision.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/conseil et astuce.png" alt="Page conseils utilisée comme contenu de veille" />
+							<figcaption class="caption">La veille nourrit aussi les contenus informatifs.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						La veille technologique m'a servi à consolider mes choix. J'ai consulté des ressources autour de Node.js, Express.js, MongoDB, Mongoose et la sécurité web. OWASP signifie Open Web Application Security Project : c'est une référence importante pour identifier les risques fréquents comme les injections, les failles d'authentification ou les mauvaises configurations. La veille m'aide aussi à suivre les versions des dépendances et les pratiques de déploiement.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">7. Déploiement du projet</p>
+					<h2>Production</h2>
+					<figure class="visual">
+						<img src="presentation/schemas/schema_deploiement_production_corrige.png" alt="Schéma de déploiement en production" />
+						<figcaption class="caption">Flux général du déploiement.</figcaption>
+					</figure>
+					<aside class="notes">
+						Le déploiement consiste à rendre le projet accessible en ligne. Le code est versionné avec Git et GitHub, puis déployé sur un VPS Linux. VPS signifie Virtual Private Server. L'accès au serveur se fait avec SSH, Secure Shell. Le nom de domaine passe par le DNS, Domain Name System, pour pointer vers le serveur. Enfin, SSL/TLS sécurise l'accès HTTPS. Le serveur héberge l'application Node.js, tandis que MongoDB Atlas héberge la base de données.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">7. Déploiement du projet</p>
+					<h2>Sécurisation serveur VPS</h2>
+					<div class="two-col">
+						<figure class="visual">
+							<img src="presentation/schemas/schema_deploiement_production_corrige.png" alt="Schéma de sécurisation du serveur VPS" />
+							<figcaption class="caption">Serveur, nom de domaine, HTTPS et base distante.</figcaption>
+						</figure>
+						<div class="code-card">
+							<pre><code class="language-bash">ssh david@adresse-du-serveur
+sudo ufw status
+sudo fail2ban-client status</code></pre>
+						</div>
+					</div>
+					<aside class="notes">
+						Un VPS est un Virtual Private Server, c'est-à-dire un serveur privé virtuel. Pour l'administrer, on utilise SSH, Secure Shell, qui permet une connexion distante sécurisée. UFW est le pare-feu : il sert à contrôler les ports ouverts, par exemple HTTP, HTTPS et SSH. Fail2Ban surveille les tentatives répétées de connexion et peut bloquer temporairement des adresses IP suspectes. Cette partie montre que le déploiement ne se limite pas à copier le code : il faut aussi penser à la sécurité du serveur.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">8. Difficultés rencontrées</p>
+					<h2>Difficultés</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Données</strong><p>Structurer les profils et les recherches.</p></div>
+							<div class="card"><strong>Sécurité</strong><p>Sessions, rôles et secrets.</p></div>
+							<div class="card"><strong>Production</strong><p>Configuration serveur et environnement.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/schemas/cahier des charge.png" alt="Contraintes issues du cahier des charges" />
+							<figcaption class="caption">Les contraintes ont guidé les choix techniques.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Les difficultés principales ont concerné la structuration des données, la recherche et le passage en production. Pour la recherche, il fallait permettre plusieurs critères sans rendre la requête trop complexe. Pour la sécurité, il fallait gérer correctement les sessions, les rôles et les variables d'environnement. Pour le déploiement, il fallait comprendre le serveur Linux, SSH, le DNS et la configuration HTTPS avec SSL/TLS.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">8. Difficultés rencontrées</p>
+					<h2>Difficultés — gestion des rôles</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Visiteur</strong><p>Accès public aux profils validés.</p></div>
+							<div class="card"><strong>Artiste</strong><p>Accès à son espace et ses informations.</p></div>
+							<div class="card"><strong>Administrateur</strong><p>Accès aux routes sensibles.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/dashboard2.png" alt="Dashboard administrateur lié à la gestion des rôles" />
+							<figcaption class="caption">Les routes sensibles sont réservées à l'administration.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						La gestion des rôles a été une difficulté parce que les utilisateurs n'ont pas tous les mêmes droits. Un visiteur doit pouvoir consulter les profils publics, mais pas accéder à l'administration. Un artiste doit pouvoir gérer son profil, mais pas valider les profils des autres. L'administrateur doit accéder aux routes sensibles. La solution a été d'utiliser les sessions pour connaître l'utilisateur connecté et des middlewares pour vérifier les droits avant d'autoriser l'accès à certaines routes.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">9. Résultats obtenus</p>
+					<h2>Résultats</h2>
+					<div class="two-col">
+						<div class="flow">
+							<div class="step"><span>01</span><p>Annuaire consultable.</p></div>
+							<div class="step"><span>02</span><p>Profils artistes dynamiques.</p></div>
+							<div class="step"><span>03</span><p>Recherche opérationnelle.</p></div>
+							<div class="step"><span>04</span><p>Administration protégée.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/artiste par recherche.png" alt="Résultat obtenu après recherche" />
+							<figcaption class="caption">Recherche et consultation opérationnelles.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Le résultat est une application complète qui répond au besoin initial. Les visiteurs peuvent consulter les profils et effectuer une recherche. Les artistes peuvent être représentés avec des informations structurées et des images. L'administrateur dispose d'un espace de modération. Le projet montre aussi un cycle complet : analyse, conception, développement Front-End, développement Back-End, sécurité et déploiement.
+					</aside>
+				</section>
+
+				<section class="results-real">
+					<p class="kicker">9. Résultats obtenus</p>
+					<h2>Résultats réels</h2>
+					<div class="two-col">
+						<div>
+							<div class="three-col">
+								<div class="metric"><strong>Site en production</strong><p>Application accessible en ligne.</p></div>
+								<div class="metric"><strong>37 artistes inscrits</strong><p>Données et usages réels.</p></div>
+								<div class="metric"><strong>InkHeart</strong><p>Partenariat professionnel.</p></div>
+							</div>
+							<div class="card"><strong>Usage réel</strong><p>Application utilisée par de vrais professionnels.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/dashboard1.png" alt="Dashboard montrant l'utilisation réelle de l'application" />
+							<figcaption class="caption">Administration de profils réels.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Cette slide est importante parce qu'elle montre que le projet n'est pas seulement une maquette. Le site est en production, avec 37 artistes inscrits. Le partenariat InkHeart donne aussi une dimension plus concrète au projet. L'application est utilisée par de vrais professionnels, ce qui m'a obligé à penser au-delà de la simple démonstration : lisibilité, fiabilité, modération, sécurité et maintenance.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">10. Conclusion</p>
+					<h2>Bilan</h2>
+					<div class="two-col">
+						<p class="lead">Un projet complet qui relie besoin utilisateur, développement web et mise en production.</p>
+						<figure class="visual">
+							<img src="presentation/images/accueil1.png" alt="Page d'accueil finale de l'application" />
+							<figcaption class="caption">Une application complète, visible et utilisable.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						En conclusion, ce projet m'a permis de mobiliser les compétences attendues pour le titre DWWM : analyser un besoin, concevoir une interface, développer une application dynamique, gérer une base de données, sécuriser les accès et déployer sur un environnement de production. Il m'a aussi permis de progresser sur l'organisation du code et sur la prise en compte des utilisateurs.
+					</aside>
+				</section>
+
+				<section>
+					<p class="kicker">11. Évolutions futures</p>
+					<h2>Évolutions futures</h2>
+					<div class="two-col">
+						<div class="three-col">
+							<div class="card"><strong>Carte interactive</strong><p>Recherche géographique visuelle.</p></div>
+							<div class="card"><strong>Messagerie</strong><p>Contact direct visiteur-artiste.</p></div>
+							<div class="card"><strong>Favoris</strong><p>Sauvegarde des profils consultés.</p></div>
+						</div>
+						<figure class="visual">
+							<img src="presentation/images/accueil3.png" alt="Base de l'application pour les évolutions futures" />
+							<figcaption class="caption">Une base évolutive pour enrichir le service.</figcaption>
+						</figure>
+					</div>
+					<aside class="notes">
+						Les évolutions futures pourraient enrichir l'expérience. Une carte interactive permettrait de localiser les artistes plus facilement. Une messagerie ou un formulaire de contact avancé pourrait fluidifier la prise de rendez-vous. Un système de favoris aiderait les visiteurs à comparer plusieurs profils. On pourrait aussi ajouter une optimisation SEO, des statistiques pour les artistes et une modération plus avancée.
+					</aside>
+				</section>
+
+				<section class="centered">
+					<p class="kicker">Questions / Réponses</p>
+					<h2>Merci pour votre attention</h2>
+					<p class="lead">Je suis prêt à répondre à vos questions.</p>
+					<figure class="visual">
+						<img src="presentation/images/conseil et astuce.png" alt="Page conseils de l'annuaire" />
+						<figcaption class="caption">Place aux échanges avec le jury.</figcaption>
+					</figure>
+					<aside class="notes">
+						Terminer calmement. Inviter le jury à poser ses questions. Si une question revient sur un acronyme : HTML signifie HyperText Markup Language, CSS signifie Cascading Style Sheets, JS signifie JavaScript, MVC signifie Model View Controller, CRUD signifie Create Read Update Delete, CSRF signifie Cross-Site Request Forgery, OWASP signifie Open Web Application Security Project, VPS signifie Virtual Private Server, SSH signifie Secure Shell, DNS signifie Domain Name System, SSL/TLS correspond à la sécurisation HTTPS, et ODM signifie Object Document Mapper.
+					</aside>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="dist/plugin/notes.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [RevealNotes],
+				transition: 'slide',
+				showNotes: false,
+			});
+		</script>
+	</body>
+</html>
