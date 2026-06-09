@@ -18,7 +18,7 @@ Want to create reveal.js presentation in a graphical editor? Try <https://slides
 ---
 
 ### Getting started
--slide de présentation [http://localhost:8000/presentation.html]
+-slide de présentation [http://localhost:8000/presentation.html).
 
 - 🚀 [Install reveal.js](https://revealjs.com/installation)
 - 👀 [View the demo presentation](https://revealjs.com/demo)
