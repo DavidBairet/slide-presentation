@@ -16,9 +16,8 @@ The framework comes with a powerful feature set including [nested slides](https:
 Want to create reveal.js presentation in a graphical editor? Try <https://slides.com>. It's made by the same people behind reveal.js.
 
 ---
-
+--slide de présentation [http://localhost:8000/presentation.html).
 ### Getting started
--slide de présentation [http://localhost:8000/presentation.html).
 
 - 🚀 [Install reveal.js](https://revealjs.com/installation)
 - 👀 [View the demo presentation](https://revealjs.com/demo)
